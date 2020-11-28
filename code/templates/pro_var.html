@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<form action="/">
+    <input type="submit" value="Go back" />
+</form>
+
+<p>Protein Variant</p>
+<p>{{Pro_var}}</p>
+<p>###############</p>
+<p>Transcript ID</p>
+<p>{{Trans_ID}}</p>
+<p>###############</p>
+<p>Transcript Variant</p>
+<p>{{Trans_var}}</p>
+<p>###############</p>
+<p>Gene</p>
+<p>{{Gene}}</p>
+
+
+
+
+<h5>The numbers</h5>
+
+<table class="table" style="width:30%">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="font-size:15px"># of Mutations</th>
+      <th scope="col" style="font-size:15px"># of Patients</th>
+
+<!--      <th scope="col">history</th>-->
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th style = "font-size:10px">{{genomics_count}}</th>
+          <th style = "font-size:10px">{{patient_number}}</th>
+          
+      </tr>
+  </tbody>
+</table>
+
+<h5>Classification Count</h5>
+
+<table class="table" style="width:100%">
+  <thead class="thead-dark">
+  <tbody>
+
+    {% for i in cla_count %}
+        <tr>
+          <td style="font-size:10px"><b>{{i[0]}}</b></td>
+          <td style="font-size:10px">{{i[1]}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<table class="table" style="width:100%">
+  <thead class="thead-dark">
+      <tr>
+          <th scope="col" style="font-size:15px">#</th>
+          <th scope="col" style="font-size:15px">Mutation containing {{Pro_var}}, {{Trans_ID}}, {{Trans_var}}</th>
+      </tr>
+  <tbody>
+
+    {% for i in parameter %}
+        <tr>
+          <td style="font-size:10px"><b>{{loop.index}}</b></td>
+          <td style="font-size:10px"><b>{{i[0]}}</b></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<p>Cancer Type Count</p>
+
+<table class="table" style="width:100%">
+  <thead class="thead-dark">
+  <tbody>
+
+    {% for i in history_count %}
+        <tr>
+          <td style="font-size:10px"><b>{{i[0]}}</b></td>
+          <td style="font-size:10px">{{i[1]}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+          
+
+
+
+
+
+
+<p>Mutation List</p>
+
+<table class="table" style="width:100%">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="font-size:15px">#</th>
+      <th scope="col" style="font-size:15px">Mutation_id</th>
+      <th scope="col" style="font-size:15px">Allele_Fraction</th>
+      <th scope="col" style="font-size:15px">Classification</th>
+      <th scope="col" style="font-size:15px">Compound_Heterozygous</th>
+      <th scope="col" style="font-size:15px">Curated</th>
+      <th scope="col" style="font-size:15px">Genotype</th>
+      <th scope="col" style="font-size:15px">Lab_UPN</th>
+      <th scope="col" style="font-size:15px">Read_Depth</th>
+<!--      <th scope="col">history</th>-->
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in genomics %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td style="font-size:10px"><a href="/test/{{i[1]}}">{{i[1]}}</a></td>
+          <td style="font-size:10px">{{i[2]}}</td>
+          <td style="font-size:10px">{{i[3]}}</td>
+          <td style="font-size:10px">{{i[4]}}</td>
+          <td style="font-size:10px">{{i[5]}}</td>
+          <td style="font-size:10px">{{i[6]}}</td>
+          <td style="font-size:10px">{{i[7]}}</td>
+          <td style="font-size:10px">{{i[8]}}</td>
+          <td style="font-size:10px">{{i[9]}}</td>
+          <td style="font-size:10px">{{i[10]}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+<p>Patient Information</p>
+<table class="table" style="width:100%">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="font-size:15px">#</th>
+      <th scope="col" style="font-size:15px">ER</th>
+      <th scope="col" style="font-size:15px">Her2_Neu</th>
+      <th scope="col" style="font-size:15px">Her2_Neu by FISH</th>
+      <th scope="col" style="font-size:15px">Her2_Neu by IHC</th>
+      <th scope="col" style="font-size:15px">Her2_Neu by unknown method</th>
+      <th scope="col" style="font-size:15px">ID</th>
+      <th scope="col" style="font-size:15px">Lab_UPN</th>
+      <th scope="col" style="font-size:15px">PR</th>
+      <th scope="col" style="font-size:15px">Pedigree_name</th>
+      <th scope="col" style="font-size:15px">UPN</th>
+<!--      <th scope="col">history</th>-->
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in patient_inf %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td style="font-size:13px">{{i['ER']}}</td>
+          <td style="font-size:13px">{{i['Her2_Neu']}}</td>
+          <td style="font-size:13px">{{i['Her2_Neu by FISH']}}</td>
+          <td style="font-size:13px">{{i['Her2_Neu by IHC']}}</td>
+          <td style="font-size:13px">{{i['Her2_Neu by unknown method']}}</td>
+          <td style="font-size:13px">{{i['ID']}}</td>
+          <td style="font-size:13px">{{i['Lab_UPN']}}</td>
+          <td style="font-size:13px">{{i['PR']}}</td>
+          <td style="font-size:13px">{{i['Pedigree_name']}}</td>
+          <td style="font-size:13px">{{i['UPN']}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
