@@ -11,4 +11,4 @@
 * Kim Jae Young
 * Kevin Tsang
 
-## Data and output is not included since our dataset is from company
+## Data and output is not included since our dataset is real company data
